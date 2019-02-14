@@ -32,7 +32,8 @@ production stylesheet in assets/built/screen.css
 @import "global.css";
 
 body {
-    background: #f4f8fb;
+    background-image: url("../bgp1.gif");
+    background-repeat: repeat;
 }
 
 .img {
@@ -113,7 +114,6 @@ body {
     padding-top: 12px;
     padding-bottom: 12px;
     color: #fff;
-    background: color(var(--darkgrey) l(-5%)) no-repeat center center;
     background-size: cover;
 }
 
@@ -390,24 +390,21 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     overflow: hidden;
     margin: 0 20px 40px;
     min-height: 300px;
-    background: #fff center center;
+    background: var(--background) center center;
     background-size: cover;
-    border-radius: 5px;
     box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
-    transition: all 0.5s ease;
 }
 
 .post-card:hover {
-    box-shadow: rgba(39,44,49,0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
-    transition: all 0.4s ease;
-    transform: translate3D(0, -1px, 0) scale(1.02);
+  -webkit-box-shadow:inset 0px 0px 0px 1px var(--text-color-highlight);
+  -moz-box-shadow:inset 0px 0px 0px 1px var(--text-color-highlight);
+  box-shadow:inset 0px 0px 0px 1px var(--text-color-highlight);
 }
 
 .post-card-image-link {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: 5px 5px 0 0;
 }
 
 .post-card-image {
@@ -422,7 +419,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     flex-grow: 1;
     display: block;
     padding: 25px 25px 0;
-    color: var(--darkgrey);
+    color: var(--text-color-normal);
 }
 
 .post-card-content-link:hover {
@@ -432,7 +429,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .post-card-tags {
     display: block;
     margin-bottom: 4px;
-    color: var(--midgrey);
+    color: var(--link-color);
     font-size: 1.2rem;
     line-height: 1.15em;
     font-weight: 500;
@@ -610,7 +607,6 @@ make sure this only happens on large viewports / desktop-ish devices.
     .post-card-large .post-card-image-link {
         position: relative;
         flex: 1 1 auto;
-        border-radius: 5px 0 0 5px;
     }
 
     .post-card-large .post-card-image {
@@ -664,18 +660,19 @@ make sure this only happens on large viewports / desktop-ish devices.
 .post-template .site-main,
 .page-template .site-main {
     padding-bottom: 4vw;
-    background: #fff;
 }
 
 .post-full {
+    margin-top: 3vw;
     position: relative;
     z-index: 50;
+    background: var(--background);
 }
 /* ^ Required to make .post-full-content:before/after z-index stacking work */
 
 .post-full-header {
     margin: 0 auto;
-    padding: 6vw 3vw 3vw;
+    padding: 3vw 3vw 3vw;
     max-width: 1040px;
     text-align: center;
 }
@@ -696,12 +693,12 @@ make sure this only happens on large viewports / desktop-ish devices.
 }
 
 .post-full-meta-date {
-    color: var(--blue);
+    color: var(--link-color);
 }
 
 .post-full-title {
     margin: 0;
-    color: color(var(--darkgrey) l(-5%));
+    color: var(--text-color-light);
 }
 
 .date-divider {
@@ -712,7 +709,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 .post-full-image {
     margin: 0 -10vw -165px;
     background: var(--lightgrey) center center;
-    border-radius: 5px;
     overflow: hidden;
 }
 
@@ -725,7 +721,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 @media (max-width: 1170px) {
     .post-full-image {
         margin: 0 -4vw -100px;
-        border-radius: 0;
     }
     .post-full-image img {
         height: 600px;
@@ -746,7 +741,7 @@ make sure this only happens on large viewports / desktop-ish devices.
     font-family: Georgia, serif;
     font-size: 2.2rem;
     line-height: 1.6em;
-    background: #fff;
+    background: var(--background);
 }
 
 @media (max-width: 1170px) {
@@ -823,19 +818,20 @@ make sure this only happens on large viewports / desktop-ish devices.
 }
 
 .post-full-content a {
-    color: #000;
+    color: var(--link-color);
     word-break: break-word;
-    box-shadow: var(--blue) 0 -1px 0 inset;
+    box-shadow: var(--link-color) 0 -1px 0 inset;
 }
 
 .post-full-content a:hover {
-    color: var(--blue);
+    color: color(var(--link-color) l(-10%));
+    box-shadow: color(var(--link-color) l(-10%)) 0 -1px 0 inset;
     text-decoration: none;
 }
 
 .post-full-content strong,
 .post-full-content em {
-    color: color(var(--darkgrey) l(-5%));
+    color: color(var(--text-color-normal) l(-5%));
 }
 
 .post-full-content small {
@@ -900,7 +896,7 @@ Usage (In Ghost editor):
 .post-full-content blockquote {
     margin: 0 0 1.5em;
     padding: 0 1.5em;
-    border-left: #3eb0ef 3px solid;
+    border-left: var(--accent-color) 3px solid;
 }
 
 .post-full-content blockquote p {
@@ -920,8 +916,7 @@ Usage (In Ghost editor):
     font-size: 0.8em;
     line-height: 1em;
     font-weight: 400!important;
-    background: var(--whitegrey);
-    border-radius: 3px;
+    color: var(--text-color-richer);
 }
 
 .post-full-content p code {
@@ -938,7 +933,6 @@ Usage (In Ghost editor):
     font-size: 1.4rem;
     line-height: 1.5em;
     background: color(var(--darkgrey) l(-3%));
-    border-radius: 5px;
 }
 
 .post-full-content pre code {
@@ -980,7 +974,7 @@ Usage (In Ghost editor):
 .post-full-content h4,
 .post-full-content h5,
 .post-full-content h6 {
-    color: color(var(--darkgrey) l(-5%));
+    color: var(--text-color-richer);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -1167,7 +1161,6 @@ Usage (In Ghost editor):
     border: color(var(--whitegrey) l(+2%)) 1px solid;
     text-align: center;
     background: color(var(--whitegrey) l(+4%));
-    border-radius: 7px;
 }
 
 .subscribe-form-title {
@@ -1209,7 +1202,6 @@ Usage (In Ghost editor):
     line-height: 1em;
     font-weight: normal;
     user-select: text;
-    border-radius: 5px;
     transition: border-color 0.15s linear;
 
     -webkit-appearance: none;
@@ -1238,7 +1230,6 @@ Usage (In Ghost editor):
     color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
     color(var(--blue) lightness(-4%) saturation(-10%))
     );
-    border-radius: 5px;
     box-shadow: 0 0 0 1px inset rgba(0,0,0,0.14);
 
     -webkit-font-smoothing: subpixel-antialiased;
@@ -1305,7 +1296,7 @@ Usage (In Ghost editor):
 }
 
 .author-card-name a {
-    color: var(--darkgrey);
+    color: var(--text-color-richer);
     font-weight: 700;
 }
 
@@ -2224,7 +2215,6 @@ Usage (In Ghost editor):
     padding-top: 20px;
     padding-bottom: 60px;
     color: #fff;
-    background: color(var(--darkgrey) l(-15%));
 }
 
 .site-footer-content {

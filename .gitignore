@@ -22,3 +22,8 @@ projectFilesBackup
 .DS_Store
 
 dist/
+
+*.swp
+node_modules/
+assets/built/
+dist/
